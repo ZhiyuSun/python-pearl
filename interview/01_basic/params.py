@@ -19,7 +19,8 @@ def fstr(s):
     print(s)
 
 
-ss = "s" # 我这里没有用空字符串，如果是空字符串，函数+"a"那里由于缓存机制，会永远为"a"的地址，读者可自己做测试
+ss = "sun" # 我这里没有用空字符串，如果是空字符串，函数+"a"那里由于缓存机制，会永远为"a"的地址，读者可自己做测试
+print(id("a"))
 print(id(ss))
 fstr(ss)    # a
 fstr(ss)    # a
@@ -43,6 +44,18 @@ def fl(l=[1]):
 fl()
 fl()
 # 记住：默认参数只计算一次
+
+print("=" * 10)
+
+# 3
+a = 1
+def fun(a):
+    print("func_in",id(a))
+    a = 2
+    print("re-point",id(a), id(2))
+print("func_out",id(a), id(1))
+
+fun(a)
 
 print("=" * 10)
 

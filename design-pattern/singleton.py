@@ -29,6 +29,13 @@ foo1 = Foo()
 foo2 = Foo()
 print(foo1 is foo2)  # True
 
+@singleton
+class Foo2:
+    pass
+foo3 = Foo2()
+foo4 = Foo2()
+print(foo1 is foo2)  # True
+
 #
 # class Singleton(type):
 #     def __call__(cls, *args, **kwargs):
