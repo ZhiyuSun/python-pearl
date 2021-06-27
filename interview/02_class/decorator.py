@@ -24,6 +24,32 @@ def mysleep2():
 newsleep = log_time(mysleep2)
 newsleep()
 
+# 装饰器带参数
+def log_time_with_param(use_int):
+    def decorator(func): # 接受一个函数作为参数
+        def _log(*args, **kwargs):
+            beg = time.time()
+            res = func(*args, **kwargs)
+            if use_int:
+                print('use time: {}'.format(int(time.time()-beg)))
+            else:
+                print('use time: {}'.format(time.time()-beg))
+            return res
+        return _log
+    return decorator
+
+@log_time_with_param(True)
+def my_sleep6():
+    time.sleep(1)
+
+@log_time_with_param(False)
+def my_sleep7():
+    time.sleep(1)
+
+my_sleep6()
+my_sleep7()
+
+print("=" * 10)
 
 # 类装饰器
 class LogTime:
